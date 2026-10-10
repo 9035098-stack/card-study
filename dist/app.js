@@ -100,7 +100,7 @@
 
   const repo = new QuestionRepository(globalThis.QUESTION_BANK);
   const progress = new ProgressStore(STORAGE_KEY);
-  const state = { section: "all", type: "all", reviewOnly: false, index: 0, visible: [] };
+  const state = { view: "practice", section: "all", type: "all", reviewOnly: false, index: 0, summarySection: "all", visible: [] };
   const elements = {
     bankVersion: document.querySelector("#bank-version"),
     masteredPercent: document.querySelector("#mastered-percent"),
@@ -129,8 +129,113 @@
     previousQuestion: document.querySelector("#previous-question"),
     nextQuestion: document.querySelector("#next-question"),
     questionDots: document.querySelector("#question-dots"),
-    clearProgress: document.querySelector("#clear-progress")
+    clearProgress: document.querySelector("#clear-progress"),
+    viewButtons: [...document.querySelectorAll("[data-view]")],
+    practiceView: document.querySelector("#practice-view"),
+    summaryView: document.querySelector("#summary-view"),
+    summaryTitle: document.querySelector("#summary-title"),
+    summaryStats: document.querySelector("#summary-stats"),
+    summaryFilters: document.querySelector("#summary-filters"),
+    knowledgeGroups: document.querySelector("#knowledge-groups"),
+    skipLink: document.querySelector(".skip-link")
   };
+
+
+  function summaryPrompt(question) {
+    return question.prompt.replace(/\{\{\d+\}\}/g, "____");
+  }
+
+  function summaryAnswer(question) {
+    return Array.isArray(question.answer) ? question.answer.join("；") : question.answer;
+  }
+
+  function createTextElement(tagName, className, text) {
+    const element = document.createElement(tagName);
+    if (className) element.className = className;
+    element.textContent = text;
+    return element;
+  }
+
+  function renderSummaryFilters() {
+    const choices = [{ id: "all", label: "全部知识点" }, ...repo.sections().map((section) => ({ id: section, label: section }))];
+    elements.summaryFilters.replaceChildren(...choices.map((choice) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `summary-filter${state.summarySection === choice.id ? " is-active" : ""}`;
+      button.setAttribute("aria-pressed", String(state.summarySection === choice.id));
+      button.textContent = choice.id === "all" ? `${choice.label} · ${repo.questions.length}` : `${choice.label} · ${repo.countBySection(choice.id)}`;
+      button.addEventListener("click", () => {
+        state.summarySection = choice.id;
+        renderKnowledge();
+      });
+      return button;
+    }));
+  }
+
+  function renderKnowledge() {
+    const visibleQuestions = state.summarySection === "all"
+      ? repo.questions
+      : repo.questions.filter((question) => question.section === state.summarySection);
+    const groups = new Map();
+    visibleQuestions.forEach((question) => {
+      if (!groups.has(question.section)) groups.set(question.section, []);
+      groups.get(question.section).push(question);
+    });
+    elements.summaryStats.textContent = `共 ${visibleQuestions.length} 条知识点 · ${groups.size} 个专题`;
+    elements.knowledgeGroups.replaceChildren(...[...groups.entries()].map(([section, questions]) => {
+      const group = document.createElement("section");
+      group.className = "knowledge-section";
+      const heading = document.createElement("div");
+      heading.className = "knowledge-section-heading";
+      heading.append(
+        createTextElement("h2", "", section),
+        createTextElement("span", "knowledge-count", `${questions.length} 条`)
+      );
+      const grid = document.createElement("div");
+      grid.className = "knowledge-grid";
+      questions.forEach((question) => {
+        const card = document.createElement("article");
+        card.className = "knowledge-card";
+        const tagLine = createTextElement("p", "knowledge-tags", question.tags.map((tag) => `#${tag}`).join(" "));
+        const prompt = createTextElement("h3", "", summaryPrompt(question));
+        const answer = document.createElement("div");
+        answer.className = "knowledge-answer";
+        answer.append(
+          createTextElement("span", "", "标准表述"),
+          createTextElement("p", "", summaryAnswer(question))
+        );
+        const explanation = createTextElement("p", "knowledge-explanation", question.explanation);
+        card.append(tagLine, prompt, answer, explanation);
+        grid.append(card);
+      });
+      group.append(heading, grid);
+      return group;
+    }));
+    renderSummaryFilters();
+  }
+
+  function switchView(view, shouldFocus = true) {
+    const isSummary = view === "summary";
+    state.view = isSummary ? "summary" : "practice";
+    elements.practiceView.hidden = isSummary;
+    elements.summaryView.hidden = !isSummary;
+    elements.skipLink.href = isSummary ? "#summary-view" : "#practice";
+    elements.viewButtons.forEach((button) => {
+      const active = button.dataset.view === state.view;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    if (isSummary) {
+      renderKnowledge();
+      if (shouldFocus) {
+        elements.summaryTitle.focus({ preventScroll: true });
+        elements.summaryView.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (shouldFocus) {
+      elements.questionTitle.focus({ preventScroll: true });
+      elements.practiceView.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 
   function strictMatch(userAnswer, answer) {
     return userAnswer.trim() === answer.trim();
@@ -366,6 +471,10 @@
     if (state.visible.length) renderQuestion();
   }
 
+  elements.viewButtons.forEach((button) => {
+    button.addEventListener("click", () => switchView(button.dataset.view));
+  });
+
   elements.answerForm.addEventListener("submit", gradeCurrentQuestion);
   elements.revealAnswer.addEventListener("click", () => reveal(currentQuestion()));
   elements.typeFilter.addEventListener("change", (event) => { state.type = event.target.value; state.index = 0; refresh(); });
@@ -385,6 +494,7 @@
     }
   });
   elements.bankVersion.textContent = repo.version;
+  renderKnowledge();
   refresh();
 })();
 
