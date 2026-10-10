@@ -22,11 +22,18 @@
             <small>把知识点写出来</small>
           </span>
         </a>
-        <p class="storage-note">学习记录仅保存在本设备</p>
+        <div class="header-actions">
+          <nav class="view-switcher" aria-label="页面切换">
+            <button class="view-button is-active" type="button" data-view="practice" aria-pressed="true">练习模式</button>
+            <button class="view-button" type="button" data-view="summary" aria-pressed="false">知识点汇总</button>
+          </nav>
+          <p class="storage-note">学习记录仅保存在本设备</p>
+        </div>
       </div>
     </header>
 
-    <main id="top" class="shell page-grid">
+    <main id="top" class="shell">
+      <div id="practice-view" class="page-grid">
       <aside class="sidebar" aria-label="练习导航">
         <section class="intro panel">
           <p class="eyebrow">BSE STUDY DESK</p>
@@ -100,6 +107,20 @@
           <div id="question-dots" class="question-dots" aria-label="题目导航"></div>
           <button id="next-question" class="nav-button" type="button">下一题 →</button>
         </div>
+      </section>
+      </div>
+
+      <section id="summary-view" class="summary-view" aria-labelledby="summary-title" tabindex="-1" hidden>
+        <div class="summary-hero">
+          <div>
+            <p class="eyebrow">KNOWLEDGE ATLAS</p>
+            <h1 id="summary-title">知识点汇总</h1>
+            <p>不答题时，按专题快速浏览全部高频考点、标准表述与易混提示。</p>
+          </div>
+          <p id="summary-stats" class="summary-stats" aria-live="polite"></p>
+        </div>
+        <div id="summary-filters" class="summary-filters" aria-label="筛选知识点专题"></div>
+        <div id="knowledge-groups" class="knowledge-groups" aria-live="polite"></div>
       </section>
     </main>
 
