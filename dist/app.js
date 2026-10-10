@@ -228,11 +228,11 @@
     if (isSummary) {
       renderKnowledge();
       if (shouldFocus) {
-        elements.summaryTitle.focus({ preventScroll: true });
+        elements.summaryView.focus({ preventScroll: true });
         elements.summaryView.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     } else if (shouldFocus) {
-      elements.questionTitle.focus({ preventScroll: true });
+      elements.practiceView.focus({ preventScroll: true });
       elements.practiceView.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
