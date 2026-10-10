@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123b5d" />
+    <meta
+      name="description"
+      content="北交所笔试高频知识点的填空、挖空与默写练习。"
+    />
+    <title>北交所笔试背诵站</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#practice">跳至练习区</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="北交所笔试背诵站首页">
+          <span class="brand-mark" aria-hidden="true">北</span>
+          <span>
+            <strong>北交所笔试背诵站</strong>
+            <small>把知识点写出来</small>
+          </span>
+        </a>
+        <p class="storage-note">学习记录仅保存在本设备</p>
+      </div>
+    </header>
+
+    <main id="top" class="shell page-grid">
+      <aside class="sidebar" aria-label="练习导航">
+        <section class="intro panel">
+          <p class="eyebrow">BSE STUDY DESK</p>
+          <h1>不是看懂，<br />是能写出。</h1>
+          <p>从填空到默写，逐步把高频考点变成你的答案。</p>
+        </section>
+
+        <section class="progress-panel panel" aria-labelledby="progress-heading">
+          <div class="section-title-row">
+            <h2 id="progress-heading">本机进度</h2>
+            <button id="clear-progress" class="text-button" type="button">清空</button>
+          </div>
+          <div class="progress-ring" aria-hidden="true"><span id="mastered-percent">0%</span></div>
+          <p id="progress-summary" class="progress-summary">尚未开始练习</p>
+          <div class="mini-stats" aria-label="练习统计">
+            <div><strong id="mastered-count">0</strong><span>已掌握</span></div>
+            <div><strong id="review-count">0</strong><span>待复习</span></div>
+            <div><strong id="attempt-count">0</strong><span>已作答</span></div>
+          </div>
+        </section>
+
+        <nav class="panel chapter-nav" aria-labelledby="chapter-heading">
+          <h2 id="chapter-heading">选择章节</h2>
+          <div id="section-filters" class="filter-list"></div>
+        </nav>
+      </aside>
+
+      <section id="practice" class="practice-area" aria-label="练习区" tabindex="-1">
+        <div class="toolbar">
+          <div>
+            <p id="current-section-label" class="eyebrow">全部专题</p>
+            <h2 id="question-counter">准备开始</h2>
+          </div>
+          <div class="toolbar-actions">
+            <label class="sr-only" for="type-filter">筛选题型</label>
+            <select id="type-filter">
+              <option value="all">全部题型</option>
+              <option value="blank">客观填空</option>
+              <option value="cloze_subjective">主观挖空</option>
+              <option value="free_response">自由默写</option>
+            </select>
+            <button id="review-toggle" class="filter-button" type="button" aria-pressed="false">只看待复习</button>
+          </div>
+        </div>
+
+        <div id="empty-state" class="empty-state panel" hidden>
+          <h2>这里暂时没有题目</h2>
+          <p>换一个筛选条件，或在题库文件中补充新的知识点。</p>
+        </div>
+
+        <article id="question-card" class="question-card" aria-live="polite">
+          <div class="question-meta">
+            <span id="type-badge" class="badge"></span>
+            <span id="difficulty-label" class="difficulty"></span>
+            <span id="tags-label" class="tags"></span>
+          </div>
+          <h2 id="question-title"></h2>
+          <div id="question-prompt" class="question-prompt"></div>
+          <form id="answer-form" novalidate>
+            <div id="answer-area"></div>
+            <div class="answer-actions">
+              <button id="submit-answer" class="primary-button" type="submit">核对答案</button>
+              <button id="reveal-answer" class="secondary-button" type="button">查看参考答案</button>
+            </div>
+          </form>
+          <section id="feedback" class="feedback" hidden aria-live="assertive"></section>
+        </article>
+
+        <div class="question-footer">
+          <button id="previous-question" class="nav-button" type="button">← 上一题</button>
+          <div id="question-dots" class="question-dots" aria-label="题目导航"></div>
+          <button id="next-question" class="nav-button" type="button">下一题 →</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>题库版本 <span id="bank-version">-</span> · 先写，再看答案。</p>
+      <p>题库会随 GitHub Pages 发布更新；本设备学习记录不随更新清除。</p>
+    </footer>
+
+    <script src="./data/questions.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
+
