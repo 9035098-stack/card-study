@@ -40,13 +40,21 @@
       return section === "all" ? this.questions.length : this.questions.filter((question) => question.section === section).length;
     }
 
-    filter({ section, type, reviewOnly, progress }) {
+    chapters(section) {
+      return [...new Set(this.questions
+        .filter((question) => question.section === section)
+        .map((question) => question.tags[0])
+        .filter(Boolean))];
+    }
+
+    filter({ section, chapter, type, reviewOnly, progress }) {
       return this.questions.filter((question) => {
         const inSection = section === "all" || question.section === section;
+        const inChapter = chapter === "all" || question.section !== "中级会计实务" || question.tags[0] === chapter;
         const inType = type === "all" || question.type === type;
         const record = progress.get(question.id);
         const needsReview = record && REVIEW_STATUSES.has(record.lastStatus);
-        return inSection && inType && (!reviewOnly || needsReview);
+        return inSection && inChapter && inType && (!reviewOnly || needsReview);
       });
     }
   }
@@ -100,7 +108,7 @@
 
   const repo = new QuestionRepository(globalThis.QUESTION_BANK);
   const progress = new ProgressStore(STORAGE_KEY);
-  const state = { view: "practice", section: "all", type: "all", reviewOnly: false, index: 0, summarySection: "all", visible: [] };
+  const state = { view: "practice", section: "all", chapter: "all", type: "all", reviewOnly: false, index: 0, summarySection: "all", visible: [] };
   const elements = {
     bankVersion: document.querySelector("#bank-version"),
     masteredPercent: document.querySelector("#mastered-percent"),
@@ -112,6 +120,7 @@
     sectionFilters: document.querySelector("#section-filters"),
     currentSectionLabel: document.querySelector("#current-section-label"),
     questionCounter: document.querySelector("#question-counter"),
+    chapterFilter: document.querySelector("#chapter-filter"),
     typeFilter: document.querySelector("#type-filter"),
     reviewToggle: document.querySelector("#review-toggle"),
     questionCard: document.querySelector("#question-card"),
@@ -274,11 +283,32 @@
       button.lastChild.textContent = repo.countBySection(choice.id);
       button.addEventListener("click", () => {
         state.section = choice.id;
+        state.chapter = "all";
         state.index = 0;
         refresh();
       });
       return button;
     }));
+  }
+
+  function renderChapterFilter() {
+    const isIntermediate = state.section === "中级会计实务";
+    elements.chapterFilter.hidden = !isIntermediate;
+    elements.chapterFilter.disabled = !isIntermediate;
+    if (!isIntermediate) {
+      elements.chapterFilter.replaceChildren();
+      return;
+    }
+    const choices = [{ id: "all", label: "全部章节" }, ...repo.chapters(state.section).map((chapter) => ({ id: chapter, label: chapter }))];
+    elements.chapterFilter.replaceChildren(...choices.map((choice) => {
+      const option = document.createElement("option");
+      option.value = choice.id;
+      const count = choice.id === "all" ? repo.countBySection(state.section) : repo.questions.filter((question) => question.section === state.section && question.tags[0] === choice.id).length;
+      option.textContent = choice.label + " · " + count;
+      option.selected = state.chapter === choice.id;
+      return option;
+    }));
+    elements.chapterFilter.value = state.chapter;
   }
 
   function setFeedback(content, tone = "") {
@@ -461,12 +491,13 @@
     state.visible = repo.filter({ ...state, progress });
     if (state.index >= state.visible.length) state.index = Math.max(0, state.visible.length - 1);
     const sectionLabel = state.section === "all" ? "全部专题" : state.section;
-    elements.currentSectionLabel.textContent = sectionLabel;
+    elements.currentSectionLabel.textContent = state.chapter === "all" ? sectionLabel : sectionLabel + " · " + state.chapter;
     elements.questionCounter.textContent = state.visible.length ? `第 ${state.index + 1} / ${state.visible.length} 题` : "没有匹配的题目";
     elements.questionCard.hidden = state.visible.length === 0;
     elements.emptyState.hidden = state.visible.length !== 0;
     elements.previousQuestion.parentElement.hidden = state.visible.length === 0;
     renderSections();
+    renderChapterFilter();
     renderStats();
     if (state.visible.length) renderQuestion();
   }
@@ -477,6 +508,7 @@
 
   elements.answerForm.addEventListener("submit", gradeCurrentQuestion);
   elements.revealAnswer.addEventListener("click", () => reveal(currentQuestion()));
+  elements.chapterFilter.addEventListener("change", (event) => { state.chapter = event.target.value; state.index = 0; refresh(); });
   elements.typeFilter.addEventListener("change", (event) => { state.type = event.target.value; state.index = 0; refresh(); });
   elements.reviewToggle.addEventListener("click", () => {
     state.reviewOnly = !state.reviewOnly;
@@ -497,4 +529,5 @@
   renderKnowledge();
   refresh();
 })();
+
 
