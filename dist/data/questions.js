@@ -4,7 +4,7 @@
  * cloze_subjective 的 prompt 中用 {{0}}、{{1}}… 标记挖空位置，answer 为对应答案数组。
  */
 globalThis.QUESTION_BANK = {
-  version: "1.3.0",
+  version: "1.4.0",
   updatedAt: "2026-10-12",
   questions: [
     {
@@ -6979,6 +6979,772 @@ globalThis.QUESTION_BANK = {
         "民间非营利组织"
       ],
       "difficulty": 2
+    },
+    {
+      "id": "zjkj-399",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "通过分步交易取得控制时，合并成本＝原持有投资的{{0}}＋新增投资成本的{{1}}。",
+      "answer": [
+        "购买日公允价值",
+        "购买日公允价值"
+      ],
+      "explanation": "原投资在合并报表中以购买日公允价值重新计量。",
+      "tags": [
+        "第二十一章",
+        "企业合并"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-400",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "原持有交易性金融资产增资取得控制，在个别报表中：借：长期股权投资；贷：{{0}}、投资收益和新对价。",
+      "answer": [
+        "交易性金融资产"
+      ],
+      "explanation": "长期股权投资初始成本以原金融资产公允价值和新增对价公允价值为基础。",
+      "tags": [
+        "第二十一章",
+        "分步取得控制"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-401",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "原持有其他权益工具投资增资取得控制时，原累计其他综合收益通常转入{{0}}和{{1}}。",
+      "answer": [
+        "盈余公积",
+        "利润分配——未分配利润"
+      ],
+      "explanation": "权益工具投资处置或转换时不计入当期损益。",
+      "tags": [
+        "第二十一章",
+        "分步取得控制"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-402",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "购买日合并报表中，资产评估增值通常确认相关资产、递延所得税负债并计入____。",
+      "answer": "资本公积",
+      "explanation": "递延所得税负债按评估增值乘适用所得税税率计算。",
+      "tags": [
+        "第二十一章",
+        "购买日合并"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-403",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "商誉＝合并成本－被购买方可辨认净资产{{0}}×{{1}}。",
+      "answer": [
+        "公允价值",
+        "持股比例"
+      ],
+      "explanation": "如果只给出净资产账面价值，需考虑评估增值的所得税影响。",
+      "tags": [
+        "第二十一章",
+        "合并商誉"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-404",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "购买日抵销长期股权投资时：借：股本、资本公积、其他综合收益、盈余公积、未分配利润、商誉；贷：{{0}}、{{1}}。",
+      "answer": [
+        "长期股权投资",
+        "少数股东权益"
+      ],
+      "explanation": "少数股东权益按子公司可辨认净资产公允价值份额计算。",
+      "tags": [
+        "第二十一章",
+        "抵销长期股权投资"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-405",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "购买日资产评估增值在以后期间，应将本年多计的折旧或摊销计入{{0}}，并相应调减{{1}}或无形资产。",
+      "answer": [
+        "管理费用",
+        "固定资产"
+      ],
+      "explanation": "存货评估增值对外出售时调整营业成本。",
+      "tags": [
+        "第二十一章",
+        "购买日公允价值调整"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-406",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "合并报表中对子公司权益法调整常称“三补一调”：按调整后净利润确认{{0}}，按其他综合收益确认{{1}}。",
+      "answer": [
+        "投资收益",
+        "其他综合收益"
+      ],
+      "explanation": "还包括其他权益变动调整及现金股利调整。",
+      "tags": [
+        "第二十一章",
+        "权益法调整"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-407",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "子公司宣告现金股利时，合并调整：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "投资收益",
+        "长期股权投资"
+      ],
+      "explanation": "金额按母公司享有份额计算。",
+      "tags": [
+        "第二十一章",
+        "权益法调整"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-408",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "年末编制合并报表时，抵销子公司利润分配：借：投资收益、少数股东损益、未分配利润——年初；贷：{{0}}、{{1}}。",
+      "answer": [
+        "提取盈余公积",
+        "年末未分配利润"
+      ],
+      "explanation": "还应按题目列示对股东分配项目。",
+      "tags": [
+        "第二十一章",
+        "投资收益抵销"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-409",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "本期内部存货交易且期末未对外出售时，抵销未实现利润：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "营业成本",
+        "存货"
+      ],
+      "explanation": "先抵销全部内部销售，再抵销留存存货虚增价值。",
+      "tags": [
+        "第二十一章",
+        "内部存货交易"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-410",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "抵销内部存货未实现利润的所得税影响：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "递延所得税资产",
+        "所得税费用"
+      ],
+      "explanation": "金额为未实现利润乘所得税税率。",
+      "tags": [
+        "第二十一章",
+        "内部存货交易"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-411",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "本期内部固定资产交易未实现利润的抵销：借：营业收入；贷：{{0}}、{{1}}。",
+      "answer": [
+        "营业成本",
+        "固定资产"
+      ],
+      "explanation": "固定资产中保留内部销售形成的未实现利润。",
+      "tags": [
+        "第二十一章",
+        "内部固定资产交易"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-412",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "抵销本期因内部固定资产交易多计提的折旧：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "固定资产",
+        "管理费用"
+      ],
+      "explanation": "以后期间对上期影响通过未分配利润——年初抵销。",
+      "tags": [
+        "第二十一章",
+        "内部固定资产交易"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-413",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "内部应收应付款抵销：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "应付账款",
+        "应收账款"
+      ],
+      "explanation": "通常按含税金额抵销。",
+      "tags": [
+        "第二十一章",
+        "内部债权债务"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-414",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "抵销内部应收账款计提的坏账准备：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "应收账款",
+        "信用减值损失"
+      ],
+      "explanation": "同时需考虑递延所得税影响。",
+      "tags": [
+        "第二十一章",
+        "内部债权债务"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-415",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "会计政策变更通常采用____法进行会计处理。",
+      "answer": "追溯调整",
+      "explanation": "不切实可行时采用未来适用法。",
+      "tags": [
+        "第二十二章",
+        "会计政策变更"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-416",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "会计估计变更通常采用____法进行会计处理。",
+      "answer": "未来适用",
+      "explanation": "不调整以前期间的比较报表。",
+      "tags": [
+        "第二十二章",
+        "会计估计变更"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-417",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "发出存货计价方法的变更属于{{0}}变更；固定资产折旧年限的变更属于{{1}}变更。",
+      "answer": [
+        "会计政策",
+        "会计估计"
+      ],
+      "explanation": "二者处理方法不同。",
+      "tags": [
+        "第二十二章",
+        "政策与估计"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-418",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "投资性房地产后续计量由成本模式变更为公允价值模式，属于____变更。",
+      "answer": "会计政策",
+      "explanation": "该变更通常采用追溯调整法。",
+      "tags": [
+        "第二十二章",
+        "会计政策变更"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-419",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "坏账准备计提比例、存货可变现净值估计和预计负债最佳估计数的变更，均属于____变更。",
+      "answer": "会计估计",
+      "explanation": "反映新信息或新情况，不是前期差错。",
+      "tags": [
+        "第二十二章",
+        "会计估计变更"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-420",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "前期差错导致增加利润时：借：有关科目；贷：{{0}}。",
+      "answer": [
+        "以前年度损益调整"
+      ],
+      "explanation": "减少利润或增加亏损时作相反分录。",
+      "tags": [
+        "第二十二章",
+        "差错更正"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-421",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "前期差错导致净利润增加并调增盈余公积：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "利润分配——未分配利润",
+        "盈余公积"
+      ],
+      "explanation": "净利润减少时方向相反。",
+      "tags": [
+        "第二十二章",
+        "差错更正"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-422",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "会计政策变更涉及损益项目时通常直接替换为____。",
+      "answer": "留存收益",
+      "explanation": "前期差错更正则先通过以前年度损益调整。",
+      "tags": [
+        "第二十二章",
+        "比较"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-423",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "对资产负债表日已经存在的情况提供新证据的，属于{{0}}事项；日后才新发生的情况，属于{{1}}事项。",
+      "answer": [
+        "调整",
+        "非调整"
+      ],
+      "explanation": "判断关键是事项所反映的情况在资产负债表日是否已存在。",
+      "tags": [
+        "第二十三章",
+        "日后事项"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-424",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "资产负债表日后发现财务报表舞弊或差错，通常属于____事项。",
+      "answer": "调整",
+      "explanation": "说明错报在报告日已经存在。",
+      "tags": [
+        "第二十三章",
+        "调整事项"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-425",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "资产负债表日后发生重大自然灾害导致资产重大损失，通常属于____事项。",
+      "answer": "非调整",
+      "explanation": "一般只披露、不调整报表金额。",
+      "tags": [
+        "第二十三章",
+        "非调整事项"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-426",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "资产负债表日后董事会拟定或股东大会批准的利润分配方案，属于____事项。",
+      "answer": "非调整",
+      "explanation": "通常在附注中披露。",
+      "tags": [
+        "第二十三章",
+        "非调整事项"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-427",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "前期差错更正与日后调整事项涉及损益时，均先通过{{0}}核算，再转入{{1}}。",
+      "answer": [
+        "以前年度损益调整",
+        "留存收益"
+      ],
+      "explanation": "会计政策变更通常直接调整留存收益。",
+      "tags": [
+        "第二十三章",
+        "日后事项"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-428",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "资产负债表日后调整事项导致增加所得税费用：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "以前年度损益调整",
+        "应交税费——应交所得税"
+      ],
+      "explanation": "减少所得税费用时作相反分录。",
+      "tags": [
+        "第二十三章",
+        "日后事项"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-429",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "资产负债表日后非调整事项的基本处理是____而不调整。",
+      "answer": "披露",
+      "explanation": "但若事项影响重大，应充分说明性质和财务影响。",
+      "tags": [
+        "第二十三章",
+        "日后事项"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-430",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "预算会计以{{0}}、预算支出和预算结余为会计要素；财务会计以资产、负债、净资产、收入和{{1}}为要素。",
+      "answer": [
+        "预算收入",
+        "费用"
+      ],
+      "explanation": "二者分别反映预算执行和财务运行。",
+      "tags": [
+        "第二十四章",
+        "政府会计"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-431",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "预算会计以{{0}}为基础；财务会计以{{1}}为基础。",
+      "answer": [
+        "收付实现制",
+        "权责发生制"
+      ],
+      "explanation": "对应“双基础”要求。",
+      "tags": [
+        "第二十四章",
+        "政府会计"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-432",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "决算报告以{{0}}核算生成的数据为准；财务报告以{{1}}核算生成的数据为准。",
+      "answer": [
+        "预算会计",
+        "财务会计"
+      ],
+      "explanation": "对应“双报告”要求。",
+      "tags": [
+        "第二十四章",
+        "政府会计"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-433",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "财政直接支付收到通知时，预算会计：借：行政支出或事业支出；贷：{{0}}。",
+      "answer": [
+        "财政拨款预算收入"
+      ],
+      "explanation": "财务会计同时确认财政拨款收入。",
+      "tags": [
+        "第二十四章",
+        "财政直接支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-434",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "财政直接支付收到通知时，财务会计：借：库存物品、固定资产等；贷：{{0}}。",
+      "answer": [
+        "财政拨款收入"
+      ],
+      "explanation": "按取得资产或发生费用确认借方科目。",
+      "tags": [
+        "第二十四章",
+        "财政直接支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-435",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "年末财政直接支付预算指标与实际支出差额，预算会计：借：资金结存——财政应返还额度；贷：{{0}}。",
+      "answer": [
+        "财政拨款预算收入"
+      ],
+      "explanation": "财务会计相应确认财政应返还额度——财政直接支付。",
+      "tags": [
+        "第二十四章",
+        "财政直接支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-436",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "财政授权支付收到通知时，预算会计：借：资金结存——零余额账户用款额度；贷：{{0}}。",
+      "answer": [
+        "财政拨款预算收入"
+      ],
+      "explanation": "财务会计借记零余额账户用款额度，贷记财政拨款收入。",
+      "tags": [
+        "第二十四章",
+        "财政授权支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-437",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "财政授权支付支用额度时，预算会计：借：行政支出或事业支出；贷：{{0}}。",
+      "answer": [
+        "资金结存——零余额账户用款额度"
+      ],
+      "explanation": "财务会计同时贷记零余额账户用款额度。",
+      "tags": [
+        "第二十四章",
+        "财政授权支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-438",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "财政授权支付年末注销未用额度时，预算会计：借：资金结存——财政应返还额度；贷：{{0}}。",
+      "answer": [
+        "资金结存——零余额账户用款额度"
+      ],
+      "explanation": "下年恢复额度时作相反分录。",
+      "tags": [
+        "第二十四章",
+        "财政授权支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-439",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "下年恢复零余额账户用款额度，财务会计：借：{{0}}；贷：财政应返还额度——财政授权支付。",
+      "answer": [
+        "零余额账户用款额度"
+      ],
+      "explanation": "与上年末注销处理相衔接。",
+      "tags": [
+        "第二十四章",
+        "财政授权支付"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-440",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "部门（单位）合并报表通常不纳入所属____及其下属单位。",
+      "answer": "企业",
+      "explanation": "执行企业会计准则制度的事业单位等也不纳入。",
+      "tags": [
+        "第二十四章",
+        "合并报表"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-441",
+      "section": "中级会计实务",
+      "type": "blank",
+      "prompt": "与行政机关脱钩的行业协会、商会通常____纳入部门（单位）合并范围。",
+      "answer": "不",
+      "explanation": "无财政拨款关系的社会组织一般也不纳入。",
+      "tags": [
+        "第二十四章",
+        "合并报表"
+      ],
+      "difficulty": 2
+    },
+    {
+      "id": "zjkj-442",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "收到非现金受托代理资产时：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "受托代理资产",
+        "受托代理负债"
+      ],
+      "explanation": "转赠或转出时作相反分录。",
+      "tags": [
+        "第二十五章",
+        "受托代理业务"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-443",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "转赠非现金受托代理资产时：借：{{0}}；贷：{{1}}。",
+      "answer": [
+        "受托代理负债",
+        "受托代理资产"
+      ],
+      "explanation": "受托代理资产并非组织自身资产。",
+      "tags": [
+        "第二十五章",
+        "受托代理业务"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-444",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "收到现金、银行存款等受托代理资产时，贷方确认{{0}}。",
+      "answer": [
+        "受托代理负债"
+      ],
+      "explanation": "借方在现金、银行存款或其他货币资金下设置受托代理资产明细。",
+      "tags": [
+        "第二十五章",
+        "受托代理业务"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-445",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "接受捐赠资产时：借：现金、存货、固定资产等；贷：{{0}}或{{1}}。",
+      "answer": [
+        "捐赠收入——限定性收入",
+        "捐赠收入——非限定性收入"
+      ],
+      "explanation": "按捐赠限制性质确认收入明细。",
+      "tags": [
+        "第二十五章",
+        "捐赠收入"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-446",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "附条件捐赠存在需返还的现时义务时，按需偿还金额：借：管理费用；贷：{{0}}。",
+      "answer": [
+        "其他应付款"
+      ],
+      "explanation": "反映组织承担的返还义务。",
+      "tags": [
+        "第二十五章",
+        "附条件捐赠"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-447",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "限定性捐赠收入的限制在当期解除时：借：捐赠收入——限定性收入；贷：{{0}}。",
+      "answer": [
+        "捐赠收入——非限定性收入"
+      ],
+      "explanation": "当期解除限制才可转列非限定性收入。",
+      "tags": [
+        "第二十五章",
+        "限定性捐赠"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-448",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "期末结转限定性捐赠收入：借：捐赠收入——限定性收入；贷：{{0}}。",
+      "answer": [
+        "限定性净资产"
+      ],
+      "explanation": "结转后捐赠收入科目应无余额。",
+      "tags": [
+        "第二十五章",
+        "期末结转"
+      ],
+      "difficulty": 3
+    },
+    {
+      "id": "zjkj-449",
+      "section": "中级会计实务",
+      "type": "cloze_subjective",
+      "prompt": "期末结转非限定性捐赠收入：借：捐赠收入——非限定性收入；贷：{{0}}。",
+      "answer": [
+        "非限定性净资产"
+      ],
+      "explanation": "可类比一般企业将本年利润结转留存收益。",
+      "tags": [
+        "第二十五章",
+        "期末结转"
+      ],
+      "difficulty": 3
     }
   ]
 };
